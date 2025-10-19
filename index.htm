@@ -1,468 +1,295 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CV - Emmanuel Perez</title>
-    <style>
-        /* Reset et styles de base pour 1 page */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', 'Helvetica', sans-serif;
-        }
-        
-        body {
-            background: white;
-            color: #333;
-            line-height: 1.3;
-            font-size: 10px;
-            padding: 10px;
-        }
-        
-        /* Conteneur principal optimisé pour 1 page A4 */
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CV - Emmanuel Perez</title>
+<style>
+    * {margin:0; padding:0; box-sizing:border-box;}
+
+    body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        font-size: 10pt;
+        line-height: 1.4;
+        color: #2c3e50;
+        background: #f4f6f8;
+        display: flex;
+        justify-content: center;
+    }
+
+    .cv-container {
+        width: 210mm;
+        height: 297mm;
+        background: #fff;
+        box-shadow: 0 0 5mm rgba(0,0,0,0.1);
+        padding: 15mm 17mm;
+        overflow: hidden;
+    }
+
+    header {
+        text-align: center;
+        margin-bottom: 12px;
+    }
+
+    header h1 {
+        font-size: 26pt;
+        color: #1e3c72;
+        margin-bottom: 4px;
+    }
+
+    header h2 {
+        font-size: 13pt;
+        color: #2a5298;
+        font-weight: 400;
+        margin-bottom: 8px;
+    }
+
+    .contact {
+        font-size: 9.5pt;
+        color: #555;
+        margin-bottom: 10px;
+    }
+
+    main {
+        display: flex;
+        gap: 18px;
+        height: calc(100% - 95px);
+    }
+
+    .left-column {
+        width: 38%;
+        padding-right: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .right-column {
+        width: 62%;
+        border-left: 2px solid #e5e5e5;
+        padding-left: 14px;
+        overflow: hidden;
+    }
+
+    h3.section-title {
+        font-size: 11pt;
+        color: #1e3c72;
+        text-transform: uppercase;
+        border-bottom: 1.5px solid #1e3c72;
+        margin-bottom: 8px;
+        padding-bottom: 2px;
+    }
+
+    p, li { font-size: 9.5pt; line-height: 1.5; }
+    ul { list-style: none; }
+
+    .section {
+        margin-bottom: 22px; /* plus d’espace */
+    }
+
+    /* Profil sans justification */
+    .profil {
+        text-align: left; 
+    }
+
+    .skills-list,
+    .languages-list,
+    .atouts-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px 10px;
+    }
+
+    .skills-list span,
+    .atouts-list span {
+        background: #ecf0f1;
+        padding: 4px 8px;
+        border-radius: 3px;
+    }
+
+    .languages-list div {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        font-size: 9pt;
+        padding: 2px 0;
+    }
+
+    /* Un peu d’air entre certains titres (sauts visuels) */
+    .skills-list, .languages-list, .certifs {
+        margin-top: 6px;
+    }
+
+    .experience { margin-bottom: 10px; }
+
+    .exp-title {
+        font-weight: 600;
+        color: #2c3e50;
+    }
+    .exp-company {
+        font-size: 9pt;
+        color: #3498db;
+        font-style: italic;
+        margin-bottom: 3px;
+    }
+    .exp-date {
+        font-size: 8.8pt;
+        color: #666;
+        margin-bottom: 3px;
+    }
+
+    .formation-item { margin-bottom: 8px; }
+    .formation-date { color: #1e3c72; font-weight: 600; font-size: 9pt; }
+    .formation-title { font-weight: 600; font-size: 9.5pt; }
+    .formation-school { font-size: 8.7pt; color: #777; font-style: italic; }
+
+    @page { size: A4; margin: 0; }
+    @media print {
+        body {background: #fff;}
         .cv-container {
-            max-width: 210mm;
-            min-height: 297mm;
-            margin: 0 auto;
-            background: white;
-            display: flex;
-            flex-direction: column;
+            box-shadow: none;
+            margin: 0;
+            width: 210mm;
+            height: 297mm;
         }
-        
-        /* En-tête */
-        .header {
-            background: #1a3a5f;
-            color: white;
-            padding: 15px 25px;
-            text-align: center;
-        }
-        
-        .name {
-            font-size: 20px;
-            margin-bottom: 3px;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
-        
-        .title {
-            font-size: 13px;
-            color: #a8c6f0;
-            margin-bottom: 8px;
-        }
-        
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 12px;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-        }
-        
-        .contact-icon {
-            margin-right: 5px;
-        }
-        
-        /* Contenu principal en 2 colonnes */
-        .main-content {
-            display: flex;
-            flex: 1;
-            padding: 15px;
-        }
-        
-        .left-column {
-            flex: 1;
-            padding-right: 15px;
-        }
-        
-        .right-column {
-            flex: 2;
-            padding-left: 15px;
-            border-left: 1px solid #e0e0e0;
-        }
-        
-        /* Sections */
-        .section {
-            margin-bottom: 15px;
-        }
-        
-        .section-title {
-            font-size: 12px;
-            color: #1a3a5f;
-            margin-bottom: 8px;
-            padding-bottom: 3px;
-            border-bottom: 1px solid #1a3a5f;
-            text-transform: uppercase;
-        }
-        
-        .profile-text {
-            font-size: 9.5px;
-            text-align: justify;
-            line-height: 1.4;
-        }
-        
-        /* Expériences professionnelles compactes */
-        .experience-item {
-            margin-bottom: 12px;
-        }
-        
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2px;
-        }
-        
-        .date {
-            color: #1a3a5f;
-            font-weight: bold;
-            font-size: 9px;
-            flex-shrink: 0;
-            width: 80px;
-        }
-        
-        .job-info {
-            flex: 1;
-        }
-        
-        .job-title {
-            font-weight: bold;
-            color: #1a3a5f;
-            font-size: 10px;
-        }
-        
-        .company {
-            color: #4d8be6;
-            font-style: italic;
-            font-size: 9px;
-        }
-        
-        .description {
-            margin-top: 3px;
-        }
-        
-        .description li {
-            margin-left: 12px;
-            font-size: 9px;
-            margin-bottom: 1px;
-        }
-        
-        /* Compétences en grille compacte */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            font-size: 9px;
-        }
-        
-        .skill-item {
-            margin-bottom: 5px;
-        }
-        
-        .skill-name {
-            display: block;
-            margin-bottom: 2px;
-        }
-        
-        .skill-bar {
-            height: 3px;
-            background: #e0e0e0;
-            border-radius: 1px;
-        }
-        
-        .skill-level {
-            height: 100%;
-            background: #4d8be6;
-            border-radius: 1px;
-        }
-        
-        /* Langues */
-        .language-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 4px;
-            font-size: 9px;
-        }
-        
-        .language-name {
-            font-weight: bold;
-        }
-        
-        .language-level {
-            color: #666;
-        }
-        
-        /* Formation */
-        .education-item {
-            margin-bottom: 8px;
-        }
-        
-        .education-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 2px;
-        }
-        
-        .education-title {
-            font-weight: bold;
-            color: #1a3a5f;
-            font-size: 10px;
-        }
-        
-        .education-school {
-            color: #666;
-            font-size: 9px;
-        }
-        
-        /* Styles d'impression */
-        @media print {
-            body {
-                padding: 0;
-                margin: 0;
-            }
-            
-            .cv-container {
-                box-shadow: none;
-                max-width: 100%;
-                min-height: 100vh;
-            }
-            
-            .header {
-                background: #1a3a5f !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-            
-            .skill-level {
-                background: #4d8be6 !important;
-                -webkit-print-color-adjust: exact;
-                color-adjust: exact;
-            }
-        }
-    </style>
+    }
+</style>
 </head>
+
 <body>
-    <div class="cv-container">
-        <!-- En-tête -->
-        <div class="header">
-            <h1 class="name">Emmanuel Perez</h1>
-            <div class="title">Technicien de Maintenance Aéronautique</div>
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span class="contact-icon">📞</span>
-                    <span>06 28 94 51 63</span>
+<div class="cv-container">
+    <header>
+        <h1>Emmanuel Perez</h1>
+        <h2>Technicien de Maintenance Aéronautique</h2>
+        <div class="contact">
+            📞 06 28 94 51 63   |   ✉️ Emmanuelpaco.perez@gmail.com   |   📍 72 Grande Rue, Coye‑La‑Forêt
+        </div>
+    </header>
+
+    <main>
+        <div class="left-column">
+            <div>
+                <div class="section">
+                    <h3 class="section-title">Profil</h3>
+                    <p class="profil">
+                        Technicien de Maintenance Aéronautique suite à une reconversion professionnelle réussie. 
+                        J'ai développé une aptitude à travailler en équipe, à suivre rigoureusement les procédures et à évoluer dans des environnements exigeants en matière de sûreté et de sécurité. 
+                        Fort de mon expérience dans l'industrie, je souhaite mettre à profit mes compétences techniques et mon sens de l'organisation au service d'une compagnie aérienne.
+                    </p>
                 </div>
-                <div class="contact-item">
-                    <span class="contact-icon">✉️</span>
-                    <span>Emmanuelpaco.perez@gmail.com</span>
+
+                <div class="section">
+                    <h3 class="section-title">Compétences</h3>
+                    <div class="skills-list">
+                        <span>Maintenance Aéronautique</span>
+                        <span>Procédures Aéronautiques</span>
+                        <span>Sécurité & Conformité</span>
+                        <span>Maintenance Industrielle</span>
+                        <span>Électricité</span>
+                        <span>Gestion d'équipe</span>
+                    </div>
                 </div>
-                <div class="contact-item">
-                    <span class="contact-icon">📍</span>
-                    <span>72, Grande Rue, Coye-La-Forêt</span>
+
+                <div class="section">
+                    <h3 class="section-title">Langues</h3>
+                    <div class="languages-list">
+                        <div><span>Portugais</span><span>C2 (Bilingue)</span></div>
+                        <div><span>Anglais</span><span>B2 (Technique)</span></div>
+                        <div><span>Espagnol</span><span>A2 (Notions)</span></div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3 class="section-title">Certifications</h3>
+                    <div class="certifs">
+                        <p>CACES Nacelle (2020)</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3 class="section-title">Atouts</h3>
+                <div class="atouts-list">
+                    <span>Rigueur</span>
+                    <span>Précision</span>
+                    <span>Esprit d'équipe</span>
+                    <span>Adaptabilité</span>
+                    <span>Polyvalence</span>
+                    <span>Autonomie</span>
+                    <span>Sens de l'organisation</span>
+                    <span>Dynamisme</span>
                 </div>
             </div>
         </div>
-        
-        <!-- Contenu principal -->
-        <div class="main-content">
-            <!-- Colonne de gauche -->
-            <div class="left-column">
-                <!-- Profil -->
-                <div class="section">
-                    <h2 class="section-title">Profil</h2>
-                    <p class="profile-text">TTechnicien de Maintenance Aéronautique suite à une reconversion professionnelle réussie.
-                 J'ai développé une aptitude à travailler en équipe, à suivre rigoureusement les procédures et à évoluer dans des environnements exigeants en matière de sûreté et de sécurité. Fort de mon expérience dans l'industrie, je souhaite mettre à profit mes compétences techniques et mon sens de l'organisation au service d'une compagnie aérienne.</p>
+
+        <div class="right-column">
+            <div class="section">
+                <h3 class="section-title">Expériences Professionnelles</h3>
+
+                <div class="experience">
+                    <div class="exp-title">Technicien de maintenance aéronautique (Stage)</div>
+                    <div class="exp-company">Air France Industrie – Service MS‑EO 3</div>
+                    <div class="exp-date">2025</div>
+                    <p>Réparation et revalorisation de pièces pour Boeing 777/787.<br>
+                    Application des procédures et normes qualité.</p>
                 </div>
-                
-                <!-- Compétences -->
-                <div class="section">
-                    <h2 class="section-title">Compétences</h2>
-                    <div class="skills-grid">
-                        <div class="skill-item">
-                            <span class="skill-name">Maintenance Aéronautique</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 90%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Procédures Aéronautiques</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Sécurité & Conformité</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 95%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Maintenance Industrielle</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 80%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Électricité</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 75%;"></div>
-                            </div>
-                        </div>
-                        <div class="skill-item">
-                            <span class="skill-name">Gestion d'équipe</span>
-                            <div class="skill-bar">
-                                <div class="skill-level" style="width: 85%;"></div>
-                            </div>
-                        </div>
-                    </div>
+
+                <div class="experience">
+                    <div class="exp-title">Technicien de maintenance industrielle</div>
+                    <div class="exp-company">Zehnder</div>
+                    <div class="exp-date">Depuis 2020</div>
+                    <p>Installation et mise en service de purificateurs.<br>
+                    Mise en conformité et sécurité des installations.</p>
                 </div>
-                
-                <!-- Langues -->
-                <div class="section">
-                    <h2 class="section-title">Langues</h2>
-                    <div class="language-item">
-                        <span class="language-name">Portugais</span>
-                        <span class="language-level">C2 (Bilingue)</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">Anglais</span>
-                        <span class="language-level">B2 (Technique)</span>
-                    </div>
-                    <div class="language-item">
-                        <span class="language-name">Espagnol</span>
-                        <span class="language-level">A2 (Notions)</span>
-                    </div>
+
+                <div class="experience">
+                    <div class="exp-title">Assistant électricien</div>
+                    <div class="exp-company">Cipe</div>
+                    <div class="exp-date">2018 – 2020</div>
+                    <p>Entretien et dépannage électrique.<br>
+                    Création de réseaux conformes.</p>
                 </div>
-                
-                <!-- Certifications -->
-                <div class="section">
-                    <h2 class="section-title">Certifications</h2>
-                    <p style="font-size: 9px;">CACES Nacelle (2020)</p>
+
+                <div class="experience">
+                    <div class="exp-title">Manager de restaurant</div>
+                    <div class="exp-company">Bistrot Le Vin & The Garden (Brésil)</div>
+                    <div class="exp-date">2011 – 2018</div>
+                    <p>Management d'une équipe de 35 personnes.<br>
+                    Gestion opérationnelle et fournisseurs.</p>
+                </div>
+
+                <div class="experience">
+                    <div class="exp-title">Agent d’escale commercial</div>
+                    <div class="exp-company">Air France</div>
+                    <div class="exp-date">2002 – 2010</div>
+                    <p>Accueil et enregistrement des passagers.<br>
+                    Gestion des vols back‑office (ARDV).</p>
                 </div>
             </div>
-            
-            <!-- Colonne de droite -->
-            <div class="right-column">
-                <!-- Expériences professionnelles -->
-                <div class="section">
-                    <h2 class="section-title">Expériences Professionnelles</h2>
-                    
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <div class="job-title">Technicien de maintenance aéronautique (Stage)</div>
-                                <div class="company">Air France Industrie – Service MS-EO 3</div>
-                            </div>
-                            <div class="date">2025</div>
-                        </div>
-                        <ul class="description">
-                            <li>Réparation et revalorisation de pièces pour Boeing 777/787</li>
-                            <li>Application des procédures de maintenance et normes de qualité</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <div class="job-title">Technicien de maintenance industrielle</div>
-                                <div class="company">Zehnder</div>
-                            </div>
-                            <div class="date">Depuis 2020</div>
-                        </div>
-                        <ul class="description">
-                            <li>Installation et mise en service de purificateurs</li>
-                            <li>Mise en conformité et sécurité des installations</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <div class="job-title">Assistant électricien</div>
-                                <div class="company">Cipe</div>
-                            </div>
-                            <div class="date">2018-2020</div>
-                        </div>
-                        <ul class="description">
-                            <li>Entretien et dépannage réseau électrique</li>
-                            <li>Création de réseaux électriques conformes</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <div class="job-title">Manager de restaurant</div>
-                                <div class="company">Bistrot Le Vin & The Garden (Brésil)</div>
-                            </div>
-                            <div class="date">2011-2018</div>
-                        </div>
-                        <ul class="description">
-                            <li>Management d'une équipe de 35 personnes</li>
-                            <li>Gestion opérationnelle et relations fournisseurs</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="experience-item">
-                        <div class="experience-header">
-                            <div class="job-info">
-                                <div class="job-title">Agent d'escale commercial</div>
-                                <div class="company">Air France</div>
-                            </div>
-                            <div class="date">2002-2010</div>
-                        </div>
-                        <ul class="description">
-                            <li>Accueil et enregistrement des passagers</li>
-                            <li>Gestion des vols back office (ARDV)</li>
-                        </ul>
-                    </div>
+
+            <div class="section">
+                <h3 class="section-title">Formation</h3>
+
+                <div class="formation-item">
+                    <div class="formation-date">2024 – 2025</div>
+                    <div class="formation-title">Bac Pro Aéronautique – Mention TB</div>
+                    <div class="formation-school">Lycée Aristide Briand</div>
                 </div>
-                
-                <!-- Formation -->
-                <div class="section">
-                    <h2 class="section-title">Formation</h2>
-                    
-                    <div class="education-item">
-                        <div class="education-header">
-                            <div class="education-title">Bac Pro Aéronautique - Mention TB</div>
-                            <div class="date">2024-2025</div>
-                        </div>
-                        <div class="education-school">Lycée Aristide Briand</div>
-                    </div>
-                    
-                    <div class="education-item">
-                        <div class="education-header">
-                            <div class="education-title">Deug de STAPS (Niveau)</div>
-                            <div class="date">1999-2001</div>
-                        </div>
-                        <div class="education-school">Université Paris XIII</div>
-                    </div>
-                    
-                    <div class="education-item">
-                        <div class="education-header">
-                            <div class="education-title">Bac S</div>
-                            <div class="date">1999</div>
-                        </div>
-                        <div class="education-school">Lycée Jean-Jacques Rousseau, Sarcelles</div>
-                    </div>
+
+                <div class="formation-item">
+                    <div class="formation-date">1999 – 2001</div>
+                    <div class="formation-title">DEUG de STAPS (Niveau)</div>
+                    <div class="formation-school">Université Paris XIII</div>
                 </div>
-                
-                <!-- Compétences transversales -->
-                <div class="section">
-                    <h2 class="section-title">Atouts</h2>
-                    <div style="font-size: 9px; line-height: 1.4;">
-                        <p>• Rigueur et précision • Esprit d'équipe • Adaptabilité</p>
-                        <p>• Polyvalence • Autonomie • Sens de l'organisation</p>
-                        <p>• Gestion d'équipe • Dynamisme</p>
-                    </div>
+
+                <div class="formation-item">
+                    <div class="formation-date">1999</div>
+                    <div class="formation-title">Bac S</div>
+                    <div class="formation-school">Lycée Jean‑Jacques Rousseau, Sarcelles</div>
                 </div>
             </div>
         </div>
-    </div>
+    </main>
+</div>
 </body>
 </html>
