@@ -5,275 +5,254 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Emmanuel Perez</title>
     <style>
-        /* Styles généraux */
-    @media print {
-      @page {
-        size: A4;
-        margin: 0; /* supprime les marges par défaut */
-      }
-
-      html, body {
-        width: 210mm;
-        height: 297mm;
-        margin: 0;
-        overflow: hidden; /* évite les débordements */
-        zoom: 0.7; /* ajuste selon la taille de ton contenu */
-        background: white !important;
-        color: black !important;
-      }
-
-      .cv-container {
-        box-shadow: none !important; /* supprime l’ombre pour impression */
-        margin: 0 auto;
-      }
-
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
-      header, footer, nav {
-        display: block !important;
-      }
-    }
-    }
+        /* Reset et styles de base pour 1 page */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
         }
         
         body {
-            background-color: #f5f7fa;
+            background: white;
             color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            line-height: 1.3;
+            font-size: 10px;
+            padding: 10px;
         }
         
+        /* Conteneur principal optimisé pour 1 page A4 */
         .cv-container {
-            max-width: 1000px;
+            max-width: 210mm;
+            min-height: 297mm;
             margin: 0 auto;
             background: white;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
-            overflow: hidden;
             display: flex;
+            flex-direction: column;
         }
         
-        /* Colonne de gauche */
-        .left-column {
-            flex: 1;
+        /* En-tête */
+        .header {
             background: #1a3a5f;
             color: white;
-            padding: 40px 25px;
-        }
-        
-        .profile-header {
+            padding: 15px 25px;
             text-align: center;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .name {
-            font-size: 28px;
-            margin-bottom: 5px;
+            font-size: 20px;
+            margin-bottom: 3px;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            font-weight: bold;
         }
         
         .title {
-            font-size: 18px;
+            font-size: 13px;
             color: #a8c6f0;
-            font-weight: 400;
+            margin-bottom: 8px;
         }
         
         .contact-info {
-            margin-bottom: 30px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            font-size: 12px;
         }
         
         .contact-item {
-            margin-bottom: 12px;
             display: flex;
             align-items: center;
         }
         
         .contact-icon {
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
+            margin-right: 5px;
+        }
+        
+        /* Contenu principal en 2 colonnes */
+        .main-content {
+            display: flex;
+            flex: 1;
+            padding: 15px;
+        }
+        
+        .left-column {
+            flex: 1;
+            padding-right: 15px;
+        }
+        
+        .right-column {
+            flex: 2;
+            padding-left: 15px;
+            border-left: 1px solid #e0e0e0;
+        }
+        
+        /* Sections */
+        .section {
+            margin-bottom: 15px;
         }
         
         .section-title {
-            font-size: 18px;
+            font-size: 12px;
+            color: #1a3a5f;
+            margin-bottom: 8px;
+            padding-bottom: 3px;
+            border-bottom: 1px solid #1a3a5f;
             text-transform: uppercase;
-            margin: 30px 0 15px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
-            position: relative;
         }
         
-        .skills-list {
-            list-style: none;
+        .profile-text {
+            font-size: 9.5px;
+            text-align: justify;
+            line-height: 1.4;
         }
         
-        .skills-list li {
+        /* Expériences professionnelles compactes */
+        .experience-item {
             margin-bottom: 12px;
+        }
+        
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+        
+        .date {
+            color: #1a3a5f;
+            font-weight: bold;
+            font-size: 9px;
+            flex-shrink: 0;
+            width: 80px;
+        }
+        
+        .job-info {
+            flex: 1;
+        }
+        
+        .job-title {
+            font-weight: bold;
+            color: #1a3a5f;
+            font-size: 10px;
+        }
+        
+        .company {
+            color: #4d8be6;
+            font-style: italic;
+            font-size: 9px;
+        }
+        
+        .description {
+            margin-top: 3px;
+        }
+        
+        .description li {
+            margin-left: 12px;
+            font-size: 9px;
+            margin-bottom: 1px;
+        }
+        
+        /* Compétences en grille compacte */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 9px;
+        }
+        
+        .skill-item {
+            margin-bottom: 5px;
         }
         
         .skill-name {
             display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
+            margin-bottom: 2px;
         }
         
         .skill-bar {
-            height: 6px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
-            margin-top: 5px;
+            height: 3px;
+            background: #e0e0e0;
+            border-radius: 1px;
         }
         
         .skill-level {
             height: 100%;
             background: #4d8be6;
-            border-radius: 3px;
+            border-radius: 1px;
         }
         
+        /* Langues */
         .language-item {
-            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 4px;
+            font-size: 9px;
         }
         
         .language-name {
-            font-weight: 500;
+            font-weight: bold;
         }
         
         .language-level {
-            color: #a8c6f0;
-            font-size: 14px;
-            margin-top: 3px;
+            color: #666;
         }
         
-        /* Colonne de droite */
-        .right-column {
-            flex: 2;
-            padding: 40px;
+        /* Formation */
+        .education-item {
+            margin-bottom: 8px;
         }
         
-        .section-title-right {
-            font-size: 20px;
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 2px;
+        }
+        
+        .education-title {
+            font-weight: bold;
             color: #1a3a5f;
-            margin: 30px 0 20px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #e0e6ef;
-            position: relative;
+            font-size: 10px;
         }
         
-        .section-title-right:first-child {
-            margin-top: 0;
+        .education-school {
+            color: #666;
+            font-size: 9px;
         }
         
-        .profile-text {
-            margin-bottom: 25px;
-            line-height: 1.7;
-            text-align: justify;
-        }
-        
-        .experience-item, .education-item {
-            margin-bottom: 25px;
-            position: relative;
-            padding-left: 20px;
-        }
-        
-        .experience-item:before, .education-item:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #4d8be6;
-        }
-        
-        .date {
-            color: #1a3a5f;
-            font-weight: 600;
-            margin-bottom: 5px;
-            font-size: 15px;
-        }
-        
-        .job-title {
-            font-weight: 700;
-            color: #1a3a5f;
-            margin-bottom: 5px;
-            font-size: 17px;
-        }
-        
-        .company {
-            color: #4d8be6;
-            margin-bottom: 10px;
-            font-weight: 500;
-            font-style: italic;
-        }
-        
-        .description {
-            margin-top: 8px;
-        }
-        
-        .description li {
-            margin-bottom: 5px;
-            margin-left: 20px;
-        }
-        
-        .skills-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        
-        .skills-table th {
-            background: #e0e6ef;
-            padding: 12px 15px;
-            text-align: left;
-            color: #1a3a5f;
-            font-weight: 600;
-        }
-        
-        .skills-table td {
-            padding: 12px 15px;
-            border-bottom: 1px solid #e0e6ef;
-            vertical-align: top;
-        }
-        
-        .skills-table tr:last-child td {
-            border-bottom: none;
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .cv-container {
-                flex-direction: column;
+        /* Styles d'impression */
+        @media print {
+            body {
+                padding: 0;
+                margin: 0;
             }
             
-            .left-column, .right-column {
-                padding: 25px 20px;
+            .cv-container {
+                box-shadow: none;
+                max-width: 100%;
+                min-height: 100vh;
+            }
+            
+            .header {
+                background: #1a3a5f !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
+            }
+            
+            .skill-level {
+                background: #4d8be6 !important;
+                -webkit-print-color-adjust: exact;
+                color-adjust: exact;
             }
         }
     </style>
 </head>
 <body>
     <div class="cv-container">
-        <!-- Colonne de gauche -->
-        <div class="left-column">
-            <div class="profile-header">
-                <h1 class="name">Emmanuel Perez</h1>
-                <div class="title">Technicien de Maintenance Aéronautique</div>
-            </div>
-            
+        <!-- En-tête -->
+        <div class="header">
+            <h1 class="name">Emmanuel Perez</h1>
+            <div class="title">Technicien de Maintenance Aéronautique</div>
             <div class="contact-info">
-                <h2 class="section-title">Contact</h2>
                 <div class="contact-item">
                     <span class="contact-icon">📞</span>
                     <span>06 28 94 51 63</span>
@@ -287,187 +266,203 @@
                     <span>72, Grande Rue, Coye-La-Forêt</span>
                 </div>
             </div>
-            
-            <div class="skills">
-                <h2 class="section-title">Compétences Clés</h2>
-                <ul class="skills-list">
-                    <li>
-                        <span class="skill-name">Maintenance Aéronautique</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 90%;"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="skill-name">Procédures Aéronautiques</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 85%;"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="skill-name">Sécurité & Conformité</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 95%;"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="skill-name">Maintenance Industrielle</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 80%;"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <span class="skill-name">Électricité</span>
-                        <div class="skill-bar">
-                            <div class="skill-level" style="width: 75%;"></div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="languages">
-                <h2 class="section-title">Langues</h2>
-                <div class="language-item">
-                    <div class="language-name">Portugais</div>
-                    <div class="language-level">C2 (Bilingue - expérience professionnelle au Brésil)</div>
-                </div>
-                <div class="language-item">
-                    <div class="language-name">Anglais</div>
-                    <div class="language-level">B2 (Opérationnel/Technique)</div>
-                </div>
-                <div class="language-item">
-                    <div class="language-name">Espagnol</div>
-                    <div class="language-level">A2 (Notions)</div>
-                </div>
-            </div>
-            
-            <div class="certifications">
-                <h2 class="section-title">Certifications</h2>
-                <p>CACES Nacelle (2020)</p>
-            </div>
         </div>
         
-        <!-- Colonne de droite -->
-        <div class="right-column">
-            <div class="profile">
-                <h2 class="section-title-right">Profil Professionnel</h2>
-                <p class="profile-text">Technicien de Maintenance Aéronautique suite à une reconversion professionnelle réussie.
+        <!-- Contenu principal -->
+        <div class="main-content">
+            <!-- Colonne de gauche -->
+            <div class="left-column">
+                <!-- Profil -->
+                <div class="section">
+                    <h2 class="section-title">Profil</h2>
+                    <p class="profile-text">TTechnicien de Maintenance Aéronautique suite à une reconversion professionnelle réussie.
                  J'ai développé une aptitude à travailler en équipe, à suivre rigoureusement les procédures et à évoluer dans des environnements exigeants en matière de sûreté et de sécurité. Fort de mon expérience dans l'industrie, je souhaite mettre à profit mes compétences techniques et mon sens de l'organisation au service d'une compagnie aérienne.</p>
+                </div>
+                
+                <!-- Compétences -->
+                <div class="section">
+                    <h2 class="section-title">Compétences</h2>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <span class="skill-name">Maintenance Aéronautique</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 90%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Procédures Aéronautiques</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Sécurité & Conformité</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 95%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Maintenance Industrielle</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 80%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Électricité</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 75%;"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span class="skill-name">Gestion d'équipe</span>
+                            <div class="skill-bar">
+                                <div class="skill-level" style="width: 85%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Langues -->
+                <div class="section">
+                    <h2 class="section-title">Langues</h2>
+                    <div class="language-item">
+                        <span class="language-name">Portugais</span>
+                        <span class="language-level">C2 (Bilingue)</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Anglais</span>
+                        <span class="language-level">B2 (Technique)</span>
+                    </div>
+                    <div class="language-item">
+                        <span class="language-name">Espagnol</span>
+                        <span class="language-level">A2 (Notions)</span>
+                    </div>
+                </div>
+                
+                <!-- Certifications -->
+                <div class="section">
+                    <h2 class="section-title">Certifications</h2>
+                    <p style="font-size: 9px;">CACES Nacelle (2020)</p>
+                </div>
             </div>
             
-            <div class="experience">
-                <h2 class="section-title-right">Expériences Professionnelles</h2>
-                
-                <div class="experience-item">
-                    <div class="date">Avril - Mai 2025</div>
-                    <h3 class="job-title">Technicien de maintenance aéronautique (Stage de fin de cursus)</h3>
-                    <div class="company">Air France Industrie – Service MS-EO 3</div>
-                    <ul class="description">
-                        <li>Réparation et revalorisation de pièces détachées d'éléments cabines pour avions Boeing 777 et 787</li>
-                        <li>Application rigoureuse des procédures de maintenance et des normes de qualité aéronautique</li>
-                        <li>Participation active au service de maintenance, assurant la traçabilité des opérations</li>
-                    </ul>
+            <!-- Colonne de droite -->
+            <div class="right-column">
+                <!-- Expériences professionnelles -->
+                <div class="section">
+                    <h2 class="section-title">Expériences Professionnelles</h2>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="job-info">
+                                <div class="job-title">Technicien de maintenance aéronautique (Stage)</div>
+                                <div class="company">Air France Industrie – Service MS-EO 3</div>
+                            </div>
+                            <div class="date">2025</div>
+                        </div>
+                        <ul class="description">
+                            <li>Réparation et revalorisation de pièces pour Boeing 777/787</li>
+                            <li>Application des procédures de maintenance et normes de qualité</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="job-info">
+                                <div class="job-title">Technicien de maintenance industrielle</div>
+                                <div class="company">Zehnder</div>
+                            </div>
+                            <div class="date">Depuis 2020</div>
+                        </div>
+                        <ul class="description">
+                            <li>Installation et mise en service de purificateurs</li>
+                            <li>Mise en conformité et sécurité des installations</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="job-info">
+                                <div class="job-title">Assistant électricien</div>
+                                <div class="company">Cipe</div>
+                            </div>
+                            <div class="date">2018-2020</div>
+                        </div>
+                        <ul class="description">
+                            <li>Entretien et dépannage réseau électrique</li>
+                            <li>Création de réseaux électriques conformes</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="job-info">
+                                <div class="job-title">Manager de restaurant</div>
+                                <div class="company">Bistrot Le Vin & The Garden (Brésil)</div>
+                            </div>
+                            <div class="date">2011-2018</div>
+                        </div>
+                        <ul class="description">
+                            <li>Management d'une équipe de 35 personnes</li>
+                            <li>Gestion opérationnelle et relations fournisseurs</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="experience-header">
+                            <div class="job-info">
+                                <div class="job-title">Agent d'escale commercial</div>
+                                <div class="company">Air France</div>
+                            </div>
+                            <div class="date">2002-2010</div>
+                        </div>
+                        <ul class="description">
+                            <li>Accueil et enregistrement des passagers</li>
+                            <li>Gestion des vols back office (ARDV)</li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="experience-item">
-                    <div class="date">Depuis 2020</div>
-                    <h3 class="job-title">Technicien de maintenance industrielle</h3>
-                    <div class="company">Zehnder</div>
-                    <ul class="description">
-                        <li>Installation et mise en service de purificateurs, en respectant des procédures strictes</li>
-                        <li>Assurer la mise en conformité des installations et la sécurité des utilisateurs</li>
-                        <li>Travail en binôme avec un respect rigoureux du port des EPI</li>
-                        <li>Maîtrise des outils et des protocoles de maintenance préventive et curative</li>
-                    </ul>
+                <!-- Formation -->
+                <div class="section">
+                    <h2 class="section-title">Formation</h2>
+                    
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="education-title">Bac Pro Aéronautique - Mention TB</div>
+                            <div class="date">2024-2025</div>
+                        </div>
+                        <div class="education-school">Lycée Aristide Briand</div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="education-title">Deug de STAPS (Niveau)</div>
+                            <div class="date">1999-2001</div>
+                        </div>
+                        <div class="education-school">Université Paris XIII</div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="education-header">
+                            <div class="education-title">Bac S</div>
+                            <div class="date">1999</div>
+                        </div>
+                        <div class="education-school">Lycée Jean-Jacques Rousseau, Sarcelles</div>
+                    </div>
                 </div>
                 
-                <div class="experience-item">
-                    <div class="date">2018-2020</div>
-                    <h3 class="job-title">Assistant électricien</h3>
-                    <div class="company">Cipe</div>
-                    <ul class="description">
-                        <li>Entretien et dépannage sur réseau électrique existant</li>
-                        <li>Création de réseau électrique particulier, en conformité avec les normes de sécurité</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="date">2011-2018</div>
-                    <h3 class="job-title">Manager du restaurant</h3>
-                    <div class="company">Bistrot Le Vin & The Garden (Brésil)</div>
-                    <ul class="description">
-                        <li>Management d'une équipe de 35 personnes</li>
-                        <li>Responsable opérationnel : gestion des commandes, contrôle des coûts, relations fournisseurs</li>
-                    </ul>
-                </div>
-                
-                <div class="experience-item">
-                    <div class="date">2002-2010</div>
-                    <h3 class="job-title">Agent d'escale commercial</h3>
-                    <div class="company">Air France</div>
-                    <ul class="description">
-                        <li>Accueil des passagers et gestion des enregistrements</li>
-                        <li>Gestionnaire des vols back office (ARDV), démontrant une bonne connaissance des opérations aériennes et logistiques</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="skills-detailed">
-                <h2 class="section-title-right">Compétences Détaillées</h2>
-                <table class="skills-table">
-                    <tr>
-                        <th>Techniques et Spécifiques à l'Aéronautique</th>
-                        <th>Transversales et Comportementales</th>
-                    </tr>
-                    <tr>
-                        <td>Maintenance Aéronautique (diagnostic, réparation, revalorisation de pièces)</td>
-                        <td>Rigueur et Précision (essentiel en aéronautique)</td>
-                    </tr>
-                    <tr>
-                        <td>Connaissance des procédures (Air France, Boeing 777/787)</td>
-                        <td>Esprit d'équipe et forte aptitude à la collaboration</td>
-                    </tr>
-                    <tr>
-                        <td>Sécurité (Respect rigoureux des procédures, CACES Nacelle)</td>
-                        <td>Adaptabilité (reconversion professionnelle réussie) et Polyvalence</td>
-                    </tr>
-                    <tr>
-                        <td>Maintenance Industrielle (Installation, mise en service, conformité)</td>
-                        <td>Autonomie, Sens de l'organisation et Dynamisme</td>
-                    </tr>
-                    <tr>
-                        <td>Électricité (Entretien, dépannage, création de réseau)</td>
-                        <td>Gestion d'équipe (Manager 35 personnes - expérience senior)</td>
-                    </tr>
-                </table>
-            </div>
-            
-            <div class="education">
-                <h2 class="section-title-right">Formation</h2>
-                
-                <div class="education-item">
-                    <div class="date">2024 - 2025</div>
-                    <h3 class="job-title">Bac Pro Aéronautique - Mention Très Bien</h3>
-                    <div class="company">Lycée Aristide Briand</div>
-                </div>
-                
-                <div class="education-item">
-                    <div class="date">1999-2001</div>
-                    <h3 class="job-title">Deug de STAPS (Niveau)</h3>
-                    <div class="company">Université Paris XIII</div>
-                </div>
-                
-                <div class="education-item">
-                    <div class="date">1999</div>
-                    <h3 class="job-title">Bac S</h3>
-                    <div class="company">Lycée Jean-Jacques Rousseau, Sarcelles</div>
+                <!-- Compétences transversales -->
+                <div class="section">
+                    <h2 class="section-title">Atouts</h2>
+                    <div style="font-size: 9px; line-height: 1.4;">
+                        <p>• Rigueur et précision • Esprit d'équipe • Adaptabilité</p>
+                        <p>• Polyvalence • Autonomie • Sens de l'organisation</p>
+                        <p>• Gestion d'équipe • Dynamisme</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
-
-
-
-
-	
