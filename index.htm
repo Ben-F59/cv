@@ -192,19 +192,33 @@ function getOverviewData(){
 }
 function computeKPIs(data){
   const positions=data.map(r=>r.pos).filter(p=>p&&p>0);
-  const clicks=data.reduce((a,r)=>a+(r.cl||0),0);
-  const impr=data.reduce((a,r)=>a+(r.im||0),0);
+  let clicks=data.reduce((a,r)=>a+(r.cl||0),0);
+  let impr=data.reduce((a,r)=>a+(r.im||0),0);
+
+  // Sans filtre catégorie : on affiche le VRAI total propriété (= graphes YoY),
+  // pas la somme des matchs (gonflée par le double comptage fuzzy).
+  const catSel=document.getElementById("f-ov-cat");
+  const catFilter=catSel?catSel.value:"";
+  let propLevel=false;
+  if(!catFilter && typeof GSC_DAILY!=="undefined" && GSC_DAILY){
+    clicks=GSC_DAILY.totalCl26;
+    impr=GSC_DAILY.totalIm26;
+    propLevel=true;
+  }
+
   return{total:data.length,
     avg_pos:positions.length?+(positions.reduce((a,b)=>a+b,0)/positions.length).toFixed(1):0,
     clicks,impr,ctr:impr>0?+(clicks/impr*100).toFixed(2):0,
-    vol:data.reduce((a,r)=>a+(r.vol||0),0)};
+    vol:data.reduce((a,r)=>a+(r.vol||0),0),propLevel};
 }
 function renderKPIs(s){
+  const clLbl=s.propLevel?"Clics (propriété)":"Clics (catégorie)";
+  const imLbl=s.propLevel?"Impressions (propriété)":"Impr. (catégorie)";
   const kpis=[
     {v:s.total.toLocaleString("fr"),l:"Mots-clés",c:"#60a5fa"},
     {v:s.avg_pos.toFixed(1),l:"Position moy.",c:"#fbbf24"},
-    {v:Math.round(s.clicks).toLocaleString("fr"),l:"Clics GSC",c:"#34d399"},
-    {v:Math.round(s.impr).toLocaleString("fr"),l:"Impressions",c:"#a78bfa"},
+    {v:Math.round(s.clicks).toLocaleString("fr"),l:clLbl,c:"#34d399"},
+    {v:Math.round(s.impr).toLocaleString("fr"),l:imLbl,c:"#a78bfa"},
     {v:s.ctr+"%",l:"CTR moyen",c:"#22d3ee"},
     {v:Math.round(s.vol).toLocaleString("fr"),l:"Volume total",c:"#fb923c"},
   ];
@@ -232,11 +246,11 @@ function renderYoYSummary(elId,now,prev,label){
   const d=pctDelta(now,prev);
   document.getElementById(elId).innerHTML=`
     <div class="yoy-box">
-      <span class="yoy-lbl">Mai 2026</span>
+      <span class="yoy-lbl">Juil. 2026</span>
       <span class="yoy-val" style="color:#60a5fa">${Math.round(now).toLocaleString("fr")}</span>
     </div>
     <div class="yoy-box">
-      <span class="yoy-lbl">Mai 2025</span>
+      <span class="yoy-lbl">Juil. 2025</span>
       <span class="yoy-val" style="color:#64748b">${Math.round(prev).toLocaleString("fr")}</span>
     </div>
     <span class="yoy-delta ${d.up?"up":"dn"}">${d.txt}</span>`;
